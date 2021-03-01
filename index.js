@@ -156,12 +156,27 @@
 
 const http = require('http');
 const { URL } = require('url');
+const fs = require('fs');
 
 http.createServer((request, response) => {
     const myURL = new URL(`http://127.0.0.1:3000${request.url}`);
-    console.log(myURL);
-    let params = myURL.searchParams.get('q');
-    response.end(params);
+    console.log(myURL.pathname);
+    fs.readFile(getPageNameByPath(myURL.pathname) + '.html', 'utf-8', (error, data) => {
+        if (error) throw new Error(error);
+        response.end(data);
+    })
 }).listen(3000, '127.0.0.1', () => {
     console.log(`Server running http://127.0.0.1:3000`);
 })
+
+function getPageNameByPath(path) {
+    switch (path) {
+        case '/':
+        case '/home':
+            return 'index';
+        case '/about':
+            return 'about';
+        default:
+            return 'error';
+    }
+}
