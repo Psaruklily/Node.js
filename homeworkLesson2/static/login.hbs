@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <form action="/login" method="post">
+    <label style="display:block">Enter your email<input type="text" name="email" style=" margin-left:20px"></label>
+    <label style="display:block">Enter your password<input type="text" name="password" style=" margin-left:20px"></label>
+    <input type="submit" value="SIGN IN">
+  </form>
+
+  
+  {{#if isValid}}
+    <h5>Your email or password is invalid! Try again or maybe yor are not registered yet?<br>
+    If you do not, then sign up.</h5>
+  {{/if}}
+
+
+
+</body>
+</html>
