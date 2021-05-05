@@ -1,10 +1,10 @@
 const jwt = require('jsonwebtoken');
-const { JWT_SECRET, JWT_REFRESH } = require('../configs/config');
+const { JWT_SECRET, JWT_REFRESH_SECRET } = require('../configs/config');
 
 
 module.exports = () => {
     const access_token = jwt.sign({}, JWT_SECRET, { expiresIn: '10s' });
-    const refresh_token = jwt.sign({}, JWT_REFRESH, { expiresIn: '30d' });
+    const refresh_token = jwt.sign({}, JWT_REFRESH_SECRET, { expiresIn: '30d' });
 
     return {
         access_token,

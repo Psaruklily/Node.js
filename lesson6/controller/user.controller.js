@@ -38,9 +38,9 @@ module.exports = {
         try {
             const { userId } = req.params;
 
-            // if (userId !== req.user._id.toString()) {
-            //     throw new Error('Unauthorized');
-            // }
+            if (userId !== req.user._id.toString()) {
+                throw new Error('Unauthorized');
+            }
 
             // console.log('*********************************************');
             // console.log(req.user);

@@ -26,8 +26,8 @@ app.use('*', (error, req, res, next) => {
     res
         .status(status)
         .json({
-            text: error.message,
-            ok: false
+            customCode: error.customCode,
+            message: error.message
         });
 });
 
@@ -37,7 +37,7 @@ app.listen(5000, () => {
 });
 
 function _connectDB() {
-    mongoose.connect('mongodb://localhost:27017/nodeLearnHomework4', { useNewUrlParser: true, useUnifiedTopology: true });
+    mongoose.connect('mongodb://localhost:27017/nodeLearnHomework4', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
 
     const connection = mongoose.connection;
 

@@ -9,7 +9,7 @@ const userSchema = new Schema({
     name: { type: String, required: true },
     age: { type: Number, required: true, default: 15 },
     email: { type: String, required: true },
-    password: { type: String, required: true },
+    password: { type: String, required: true, select: false },
     // cars: [carSubSchema]
     cars: [{ type: Schema.Types.ObjectId }]
 }, { timestamps: true, toObject: { virtuals: true }, toJSON: { virtuals: true } });

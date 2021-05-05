@@ -3,8 +3,21 @@ module.exports = {
         customCode: 4001
     },
 
-    WRONG_EMAIL_OR_PASSWORD: {
+    ID_NOT_VALID: {
         customCode: 4002
+    },
+
+    WRONG_EMAIL_OR_PASSWORD: {
+        customCode: 4003
+    },
+
+    NO_TOKEN: {
+        customCode: 4004
+    },
+
+    //UNAUTHORIZED
+    WRONG_TOKEN: {
+        customCode: 4001
     },
 
     RECORD_NOT_FOUND: {

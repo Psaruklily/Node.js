@@ -1,5 +1,6 @@
 const { userValidators } = require('../validator');
 const ErrorHandler = require('../error/ErrorHandler');
+const User = require('../database/models/User');
 
 module.exports = {
     isUserValid: (req, res, next) => {
@@ -12,10 +13,27 @@ module.exports = {
 
             next();
         } catch (error) {
-            //res.status(400).json(error.message);
             next(error);
         }
     },
+
+    checkIsUserPresent: async(req, res, next) => {
+        try {
+            const { email } = req.body;
+
+            const user = await User.findOne({ email }).select('+password');
+
+            if (!user) {
+                throw new Error('No user');
+            }
+
+            req.user = user;
+
+            next();
+        } catch (error) {
+            next(error);
+        }
+    }
 
     //PSEUDO CODE
 
