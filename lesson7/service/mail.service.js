@@ -4,9 +4,6 @@ const templatesInfo = require('../email-templates');
 const { ROOT_EMAIL, ROOT_EMAIL_PASSWORD } = require('../configs/config');
 const path = require('path');
 
-console.log(ROOT_EMAIL)
-console.log(ROOT_EMAIL_PASSWORD)
-
 const templateParser = new EmailTemplates({
     views: {
         root: path.join(process.cwd(), 'email-templates')
